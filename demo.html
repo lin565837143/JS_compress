@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>js compress</title>
+
+</head>
+
+<body>
+
+    <input id="file" type="file" onchange="chooseImg()">
+
+    <script>
+        let file = document.getElementById('file');
+
+        function chooseImg() {
+            let fileObj = file.files[0];
+            console.log(fileObj);
+            photoCompress(fileObj, {
+                quality: 0.8
+            }, (base64Codes) => {
+                let blob = convertBase64UrlToBlob(base64Codes);
+                console.log(blob);
+            })
+        }
+    </script>
+    <script src="./compress.js"></script>
+    <script src="./exif//exif.js"></script>
+</body>
+
+</html>
